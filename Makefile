@@ -1,18 +1,26 @@
-#CC=mipsel-linux-gnu-gcc
-#CFLAGS=-march=74kc -Wall -Os -g
-#CC=gcc
-#CFLAGS=-Wall -Os -g
+CC ?= gcc
+CFLAGS ?= -Wall -Os -g
+ARFLAGS = rcs
+OBJ = p1-parser.o p1-lib.o crc16.o
 
-all: p1-parser.c
-	$(CC) $(CFLAGS) -c -o p1-lib.o p1-lib.c
-	$(CC) $(CFLAGS) -c -o crc16.o crc16.c
-	$(CC) $(CFLAGS) -c -o p1-parser.o p1-parser.c
-	ar rcs libdsmr.a p1-lib.o crc16.o p1-parser.o
+all: p1-test-p1 p1-test-d0 libdsmr.a
+
+%.o: %.c
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 p1-parser.c:
 	ragel -s p1-parser.rl
 
+p1-test-p1: p1-test.o $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
+
+p1-test-d0: p1-test-d0.o $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
+
+libdsmr.a: $(OBJ)
+	$(AR) $(ARFLAGS) $@ $(OBJ)
+
 .PHONY: clean
 
 clean:
-	rm -f p1-parser.c p1-lib.o p1-parser.o crc16.o
+	rm -f $(OBJ) p1-parser.c p1-test-p1 p1-test-d0 libdsmr.a
