@@ -21,6 +21,7 @@
 #define LL_VERBOSE		5
 #define LL_DEBUG		6
 
+#ifdef ENABLE_LOGGING
 typedef struct msglogger_struct {
 	
 	char *logfile_name;
@@ -50,5 +51,8 @@ static inline void init_msglogger() {
 		fflush(logger.logfile); \
 	} \
 }
+#else
+#define logmsg(level, format, args...)
+#endif
 
 #endif //!_P1PARSE_LOGMSG_H_
