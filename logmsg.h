@@ -6,6 +6,8 @@
    	  (c)2013-2015, Levien van Zon (levien@zonnetjes.net)
 */
 
+#ifndef _P1PARSE_LOGMSG_H_
+#define _P1PARSE_LOGMSG_H_
 
 #include <stdio.h>
 
@@ -49,4 +51,4 @@ static inline void init_msglogger() {
 	} \
 }
 
-
+#endif //!_P1PARSE_LOGMSG_H_

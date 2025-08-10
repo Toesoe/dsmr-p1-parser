@@ -6,6 +6,9 @@
    	  (c)2017, Levien van Zon (levien at zonnetjes.net, https://github.com/lvzon)
 */
 
+#ifndef _P1_PARSE_H_
+#define _P1_PARSE_H_
+
 #define _GNU_SOURCE 1
 
 #include <inttypes.h>
@@ -78,3 +81,5 @@ static const long long pow10[MAX_DIVIDER_EXP + 1] = {
 void parser_init( struct parser *fsm );
 void parser_execute(struct parser *fsm, const char *data, int len, int eofflag);
 int parser_finish(struct parser *fsm);
+
+#endif //!_P1_PARSE_H_

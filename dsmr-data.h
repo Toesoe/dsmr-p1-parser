@@ -3,7 +3,8 @@
 // that comply with the Dutch DSMR standard (and also for some
 // non-DSMR meters that do comply with IEC 62056-21).
 
-#ifndef DSMR_DATA_H
+#ifndef _DSMR_DATA_H_
+#define _DSMR_DATA_H_
 
 #include <inttypes.h>
 
@@ -62,5 +63,4 @@ struct dsmr_data_struct {
 	char		unit_pfail_event_duration[MAX_EVENTS][LEN_UNIT + 1];
 };
 
-#define DSMR_DATA_H	1
-#endif
+#endif //!_DSMR_DATA_H_
