@@ -12,4 +12,4 @@
 uint16_t crc16_ccitt (const uint8_t *data, unsigned int length);
 uint16_t crc16 (const uint8_t *data, unsigned int length);
 
-#endif _P1_CRC16_H_
+#endif //!_P1_CRC16_H_
